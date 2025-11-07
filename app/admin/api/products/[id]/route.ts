@@ -3,9 +3,9 @@ import { connectDB } from "@/app/lib/db";
 import  Product from "@/app/models/Product";
 import mongoose from "mongoose";
 
-export async function GET(req: Request, context: { params: { id: string } }) {
+export async function GET(req: Request, context: { params: Promise<{ id: string }> }) {
   await connectDB();
-  const { id } = context.params;
+  const { id } = await context.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return NextResponse.json({ message: "Invalid product ID" }, { status: 400 });
@@ -22,9 +22,9 @@ export async function GET(req: Request, context: { params: { id: string } }) {
   }
 }
 
-export async function PUT(req: Request, context: { params: { id: string } }) {
+export async function PUT(req: Request, context: { params: Promise<{ id: string }> }) {
   await connectDB();
-  const { id } = context.params;
+  const { id } = await context.params;
   const body = await req.json();
   console.log("PUT request received:");
   console.log("Full context:", context);
@@ -50,9 +50,9 @@ export async function PUT(req: Request, context: { params: { id: string } }) {
   }
 }
 
-export async function DELETE(req: Request, context: { params: { id: string } }) {
+export async function DELETE(req: Request, context: { params: Promise<{ id: string }> }) {
   await connectDB();
-  const { id } = context.params;
+  const { id } = await context.params;
   console.log("DELETE request received:");
   console.log("Full context:", context);
   console.log("Context params:", context.params);

@@ -306,7 +306,7 @@ export default function AdminPage() {
 
       <Grid container spacing={2}>
         {products.map((p) => (
-          <Grid item xs={12} sm={6} md={4} key={p._id}>
+          <Grid sx={{ xs: 12, sm: 6, md: 4 }} key={p._id}>
             <ProductCard
               key={p._id}
               product={p}

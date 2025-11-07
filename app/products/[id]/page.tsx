@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { Box, Typography, Button, Card, CardMedia, Grid } from "@mui/material";
 import { useCart } from "../../context/CartContext";
-import { IProduct } from "../../../types/Product";
+import { IProduct } from "../../types/Product";
 
 export default function ProductDetailPage() {
   const { id } = useParams();
@@ -42,7 +42,7 @@ export default function ProductDetailPage() {
   return (
     <Box sx={{ p: 4 }}>
       <Grid container spacing={4}>
-        <Grid item xs={12} md={6}>
+        <Grid sx={{ xs: 12, md: 6 }}>
           <Card>
             <CardMedia
               component="img"
@@ -64,7 +64,7 @@ export default function ProductDetailPage() {
             ))}
           </Box>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid sx={{ xs: 12, md: 6 }}>
           <Typography variant="h4" gutterBottom>
             {product.name}
           </Typography>
