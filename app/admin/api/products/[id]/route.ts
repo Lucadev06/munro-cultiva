@@ -4,6 +4,8 @@ import  Product from "@/app/models/Product";
 import mongoose from "mongoose";
 
 export async function GET(req: Request, context: { params: Promise<{ id: string }> }) {
+  console.log("🔍 URI detectada:", !!process.env.MONGODB_URI);
+
   await connectDB();
   const { id } = await context.params;
 
